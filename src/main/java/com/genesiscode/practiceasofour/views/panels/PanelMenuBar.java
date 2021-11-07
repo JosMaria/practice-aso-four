@@ -1,10 +1,12 @@
-package com.genesiscode.practiceasofour.views;
+package com.genesiscode.practiceasofour.views.panels;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class PanelMenuBar implements EventHandler<ActionEvent> {
 
@@ -18,8 +20,24 @@ public class PanelMenuBar implements EventHandler<ActionEvent> {
     private static final String POKER = "_Pruebas de poker";
     private static final String GAP = "_Pruebas de huecos";
 
+    private static final int PANEL_TESTS = 1;
+
     private final MenuItem menuItemAverage, menuItemFrequency, menuItemKolmogorov,
     menuItemSeries, menuItemPoker, menuItemGap;
+
+    private PanelAverage panelAverage;
+    private PanelFrequency panelFrequency;
+    private PanelGap panelGap;
+    private PanelKolmogorov panelKolmogorov;
+    private PanelPoker panelPoker;
+    private PanelSeries panelSeries;
+
+    private VBox paneMain;
+    private Pane paneBottom;
+
+    public VBox getPaneMain() {
+        return paneMain;
+    }
 
     public PanelMenuBar() {
         menuItemAverage = new MenuItem(AVERAGE);
@@ -39,9 +57,12 @@ public class PanelMenuBar implements EventHandler<ActionEvent> {
 
         menuItemGap = new MenuItem(GAP);
         menuItemGap.setOnAction(this);
+
+        paneBottom = new VBox();
+        paneMain = new VBox(10, getMenuBar(), paneBottom);
     }
 
-    public MenuBar getMenuBar() {
+    private MenuBar getMenuBar() {
         Menu menuUniformity = new Menu(UNIFORMITY);
         menuUniformity.getItems().addAll(menuItemAverage, menuItemFrequency, menuItemKolmogorov);
 
@@ -51,25 +72,43 @@ public class PanelMenuBar implements EventHandler<ActionEvent> {
         return new MenuBar(menuUniformity, menuIndependence);
     }
 
+    public void setPaneBottom(Pane paneBottom) {
+        paneMain.getChildren().remove(PANEL_TESTS);
+        paneMain.getChildren().add(paneBottom);
+    }
+
     @Override
     public void handle(ActionEvent actionEvent) {
         MenuItem source = (MenuItem) actionEvent.getSource();
+
         if (source.equals(menuItemAverage)) {
+            panelAverage = PanelAverage.getInstance();
+            setPaneBottom(panelAverage.getPaneMain());
             System.out.println("This is menu item average");
 
         } else if (source.equals(menuItemFrequency)) {
+            panelFrequency = PanelFrequency.getInstance();
+            setPaneBottom(panelFrequency.getPaneMain());
             System.out.println("This is menu item frequency");
 
         } else if (source.equals(menuItemKolmogorov)) {
+            panelKolmogorov = PanelKolmogorov.getInstance();
+            setPaneBottom(panelKolmogorov.getPaneMain());
             System.out.println("This is menu item kolmogorov");
 
         } else if(source.equals(menuItemSeries)) {
+            panelSeries = PanelSeries.getInstance();
+            setPaneBottom(panelSeries.getPaneMain());
             System.out.println("This is menu item series");
 
         } else if (source.equals(menuItemPoker)) {
+            panelPoker = PanelPoker.getInstance();
+            setPaneBottom(panelPoker.getPaneMain());
             System.out.println("This is menu item poker");
 
         } else if (source.equals(menuItemGap)) {
+            panelGap = PanelGap.getInstance();
+            setPaneBottom(panelGap.getPaneMain());
             System.out.println("This is menu item gap");
         }
     }
