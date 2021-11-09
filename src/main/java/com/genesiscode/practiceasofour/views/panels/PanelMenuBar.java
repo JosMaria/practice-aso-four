@@ -88,27 +88,27 @@ public class PanelMenuBar implements EventHandler<ActionEvent> {
 
         } else if (source.equals(menuItemFrequency)) {
             panelFrequency = PanelFrequency.getInstance();
-            setPaneBottom(panelFrequency.getPaneMain());
+            setPaneBottom(new VBox(panelFrequency.getLblHeader()));
             System.out.println("This is menu item frequency");
 
         } else if (source.equals(menuItemKolmogorov)) {
             panelKolmogorov = PanelKolmogorov.getInstance();
-            setPaneBottom(panelKolmogorov.getPaneMain());
+            setPaneBottom(new VBox(panelKolmogorov.getLblHeader()));
             System.out.println("This is menu item kolmogorov");
 
         } else if(source.equals(menuItemSeries)) {
             panelSeries = PanelSeries.getInstance();
-            setPaneBottom(panelSeries.getPaneMain());
+            setPaneBottom(new VBox(panelSeries.getLblHeader()));
             System.out.println("This is menu item series");
 
         } else if (source.equals(menuItemPoker)) {
             panelPoker = PanelPoker.getInstance();
-            setPaneBottom(panelPoker.getPaneMain());
+            setPaneBottom(new VBox(panelPoker.getLblHeader()));
             System.out.println("This is menu item poker");
 
         } else if (source.equals(menuItemGap)) {
             panelGap = PanelGap.getInstance();
-            setPaneBottom(panelGap.getPaneMain());
+            setPaneBottom(new VBox(panelGap.getLblHeader()));
             System.out.println("This is menu item gap");
         }
     }

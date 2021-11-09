@@ -6,4 +6,5 @@ module com.example.practiceasofour {
     opens com.example.practiceasofour.ui;
     opens com.genesiscode.practiceasofour.views;
     opens com.genesiscode.practiceasofour.views.panels;
+    opens com.genesiscode.practiceasofour.views.panels.rows;
 }
