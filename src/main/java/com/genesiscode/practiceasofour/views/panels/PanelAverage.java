@@ -1,6 +1,7 @@
 package com.genesiscode.practiceasofour.views.panels;
 
 import com.genesiscode.practiceasofour.models.Average;
+import com.genesiscode.practiceasofour.views.panels.commons.PanelsCommons;
 import com.genesiscode.practiceasofour.views.panels.rows.RowAverage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -24,7 +25,6 @@ public class PanelAverage extends Panel {
     private static TextField txtAlpha;
     private static TableView<RowAverage> tableResult;
 
-    private int counterTextArea = 25;
     private final Average average;
 
     private PanelAverage() {
@@ -47,15 +47,12 @@ public class PanelAverage extends Panel {
     }
 
     private void buildPane() {
-        VBox pane = new VBox(10, lblHeader, new HBox(30, paneTopLeft(), paneTopRight()), paneBottom());
+        VBox paneTopLeft = PanelsCommons.paneTopLeft(txtNumberAdd, btnAdd, btnClear, txtAreaNumbersAdded);
+        HBox paneTop = new HBox(30, paneTopLeft, paneTopRight());
+        paneTop.setAlignment(Pos.CENTER);
+        VBox pane = new VBox(10, lblHeader, paneTop, paneBottom());
         pane.setAlignment(Pos.CENTER);
         paneMain = pane;
-    }
-
-    private VBox paneTopLeft() {
-        VBox paneBottom = new VBox(10, new HBox(10, txtNumberAdd, btnAdd, btnClear), txtAreaNumbersAdded);
-        paneBottom.setPadding(new Insets(0, 20, 20, 20));
-        return new VBox(10, paneBottom);
     }
 
     private VBox paneTopRight() {
@@ -69,6 +66,16 @@ public class PanelAverage extends Panel {
     }
 
     private VBox paneBottom() {
+        createTableResult();
+        VBox pane = new VBox(tableResult);
+        pane.setMaxWidth(500);
+        pane.setMaxHeight(500);
+        pane.setPadding(new Insets(20));
+        pane.setAlignment(Pos.CENTER);
+        return pane;
+    }
+
+    private void createTableResult() {
         TableColumn<RowAverage, String> colVariable = new TableColumn<>("Variable");
         colVariable.setMinWidth(200);
         colVariable.setCellValueFactory(new PropertyValueFactory<>("variable"));
@@ -78,17 +85,10 @@ public class PanelAverage extends Panel {
         colValue.setCellValueFactory(new PropertyValueFactory<>("value"));
 
         tableResult.getColumns().addAll(List.of(colVariable, colValue));
-
-        VBox pane = new VBox(tableResult);
-        pane.setMaxWidth(500);
-        pane.setMaxHeight(500);
-        pane.setPadding(new Insets(20));
-        pane.setAlignment(Pos.CENTER);
-        return pane;
     }
 
     @Override
-    public void loadControls() {
+    protected void loadControls() {
         //pane top left
         txtNumberAdd = new TextField();
         txtNumberAdd.setPrefColumnCount(4);
@@ -116,20 +116,7 @@ public class PanelAverage extends Panel {
 
     private void click_btn_add() {
         try {
-            String textToAdd = txtNumberAdd.getText();
-            txtNumberAdd.setText("");
-            double numberAdded = Double.parseDouble(textToAdd);
-            String oldText = txtAreaNumbersAdded.getText();
-
-            if (oldText.length() == 0) {
-                txtAreaNumbersAdded.setText(textToAdd);
-            } else if (oldText.length() + textToAdd.length() > counterTextArea) {
-                txtAreaNumbersAdded.setText(oldText + "\n" + numberAdded);
-                counterTextArea += 25;
-            } else {
-                txtAreaNumbersAdded.setText(oldText + "  "  + numberAdded);
-            }
-            average.addNumber(numberAdded);
+            average.addNumber(action_btn_add(txtNumberAdd, txtAreaNumbersAdded));
         } catch (NumberFormatException ex) {
             System.out.println(ex.getMessage());
         }
@@ -143,15 +130,13 @@ public class PanelAverage extends Panel {
     private void click_btn_start() {
         if (txtAreaNumbersAdded.getLength() > 0 && txtAlpha.getLength() > 0) {
             try {
-                int alphaPercentage = Integer.parseInt(txtAlpha.getText());
-                average.setAlpha(alphaPercentage);
-                tableResult.setItems(average.getAllRows());
-            } catch (NumberFormatException ex) {
-                System.out.println("Valor de alfa no numerico");
+                average.setAlpha(Integer.parseInt(txtAlpha.getText()));
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
             }
+            tableResult.setItems(average.getAllRows());
         } else {
             System.out.println("Llenar los datos");
         }
     }
-
 }

@@ -14,7 +14,7 @@ public class WindowMain extends Application {
     @Override
     public void start(Stage stage) {
         PanelMenuBar panelMenuBar = new PanelMenuBar();
-        Scene scene = new Scene(panelMenuBar.getPaneMain(), 600, 500);
+        Scene scene = new Scene(panelMenuBar.getPaneMain(), 800, 500);
         stage.setTitle("Practica 4");
         stage.setScene(scene);
         stage.show();

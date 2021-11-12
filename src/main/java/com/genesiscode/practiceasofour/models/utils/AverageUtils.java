@@ -1,5 +1,7 @@
 package com.genesiscode.practiceasofour.models.utils;
 
+import com.genesiscode.practiceasofour.models.formulas.Areas;
+
 import java.text.DecimalFormat;
 import java.util.List;
 

@@ -25,8 +25,6 @@ public class PanelMenuBar implements EventHandler<ActionEvent> {
     private final MenuItem menuItemAverage, menuItemFrequency, menuItemKolmogorov,
     menuItemSeries, menuItemPoker, menuItemGap;
 
-    private PanelAverage panelAverage;
-    private PanelFrequency panelFrequency;
     private PanelGap panelGap;
     private PanelKolmogorov panelKolmogorov;
     private PanelPoker panelPoker;
@@ -82,13 +80,11 @@ public class PanelMenuBar implements EventHandler<ActionEvent> {
         MenuItem source = (MenuItem) actionEvent.getSource();
 
         if (source.equals(menuItemAverage)) {
-            panelAverage = PanelAverage.getInstance();
-            setPaneBottom(panelAverage.getPaneMain());
+            setPaneBottom(PanelAverage.getInstance().getPaneMain());
             System.out.println("This is menu item average");
 
         } else if (source.equals(menuItemFrequency)) {
-            panelFrequency = PanelFrequency.getInstance();
-            setPaneBottom(new VBox(panelFrequency.getLblHeader()));
+            setPaneBottom(PanelFrequency.getInstance().getPaneMain());
             System.out.println("This is menu item frequency");
 
         } else if (source.equals(menuItemKolmogorov)) {
