@@ -1,26 +1,27 @@
-package com.example.practiceasofour.model;
+package com.genesiscode.practiceasofour.models.formulas;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Areas {
 
-    private final Map<Double, Double> standardNormalCurve;
+    private static final Map<Double, Double> standardNormalCurve = new HashMap<>();
 
     public Areas() {
-        standardNormalCurve = new HashMap<>();
         loadKeysAndValues();
     }
 
     private void loadKeysAndValues() {
+        //values
         standardNormalCurve.put(0.02500, 1.96);
         standardNormalCurve.put(0.97500, 1.96);
         standardNormalCurve.put(0.95000, 1.96);
         standardNormalCurve.put(0.47500, 1.96);
-        //more values inserting
+
+        //more values to insert ...
     }
 
-    public Double getValue(Double key) throws IllegalArgumentException {
+    public double getValue(double key) throws IllegalArgumentException {
 
         if (standardNormalCurve.containsKey(key)) {
             return standardNormalCurve.get(key);
