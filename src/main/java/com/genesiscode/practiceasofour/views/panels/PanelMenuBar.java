@@ -26,7 +26,6 @@ public class PanelMenuBar implements EventHandler<ActionEvent> {
     menuItemSeries, menuItemPoker, menuItemGap;
 
     private PanelGap panelGap;
-    private PanelKolmogorov panelKolmogorov;
     private PanelPoker panelPoker;
     private PanelSeries panelSeries;
 
@@ -88,8 +87,7 @@ public class PanelMenuBar implements EventHandler<ActionEvent> {
             System.out.println("This is menu item frequency");
 
         } else if (source.equals(menuItemKolmogorov)) {
-            panelKolmogorov = PanelKolmogorov.getInstance();
-            setPaneBottom(new VBox(panelKolmogorov.getLblHeader()));
+            setPaneBottom(PanelKolmogorov.getInstance().getPaneMain());
             System.out.println("This is menu item kolmogorov");
 
         } else if(source.equals(menuItemSeries)) {
