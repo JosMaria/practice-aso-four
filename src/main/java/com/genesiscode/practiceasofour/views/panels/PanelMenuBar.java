@@ -27,7 +27,6 @@ public class PanelMenuBar implements EventHandler<ActionEvent> {
 
     private PanelGap panelGap;
     private PanelPoker panelPoker;
-    private PanelSeries panelSeries;
 
     private VBox paneMain;
     private Pane paneBottom;
@@ -91,8 +90,7 @@ public class PanelMenuBar implements EventHandler<ActionEvent> {
             System.out.println("This is menu item kolmogorov");
 
         } else if(source.equals(menuItemSeries)) {
-            panelSeries = PanelSeries.getInstance();
-            setPaneBottom(new VBox(panelSeries.getLblHeader()));
+            setPaneBottom(PanelSeries.getInstance().getPaneMain());
             System.out.println("This is menu item series");
 
         } else if (source.equals(menuItemPoker)) {

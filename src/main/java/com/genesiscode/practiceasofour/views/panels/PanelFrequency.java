@@ -149,6 +149,7 @@ public class PanelFrequency extends Panel {
     private void click_btn_clear() {
         txtAreaNumbersAdded.setText("");
         frequency.clear();
+        setValueDefaultOfCounterTextArea();
     }
 
     private void click_btn_add() {

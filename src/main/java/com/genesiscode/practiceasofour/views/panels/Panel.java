@@ -22,6 +22,10 @@ public class Panel {
 
     protected void loadControls() {}
 
+    protected void setValueDefaultOfCounterTextArea() {
+        counterTextArea = COUNT_TEXT_SPACE;
+    }
+
     protected double action_btn_add(TextField txtNumberAdd, TextArea txtAreaNumbersAdded) throws NumberFormatException {
         String textToAdd = txtNumberAdd.getText();
         double numberAdded = Double.parseDouble(textToAdd);

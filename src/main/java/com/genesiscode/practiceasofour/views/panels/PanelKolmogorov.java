@@ -110,7 +110,6 @@ public class PanelKolmogorov extends Panel {
 
         txtAreaNumbersAdded = new TextArea();
         txtAreaNumbersAdded.setDisable(true);
-        txtAreaNumbersAdded.setPrefColumnCount(4);
         txtAreaNumbersAdded.setMaxHeight(90);
 
         //pane top right
@@ -140,6 +139,7 @@ public class PanelKolmogorov extends Panel {
     private void click_btn_clear() {
         txtAreaNumbersAdded.setText("");
         kolmogorovSmirnov.clear();
+        setValueDefaultOfCounterTextArea();
     }
 
     private void click_btn_start() {

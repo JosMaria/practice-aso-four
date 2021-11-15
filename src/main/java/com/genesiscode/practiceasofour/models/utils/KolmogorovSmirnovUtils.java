@@ -5,7 +5,7 @@ import java.util.List;
 
 public class KolmogorovSmirnovUtils {
 
-    public static List<Double> inverseList(List<Double> inputList) {
+    public static List<Double> sortList(List<Double> inputList) {
         List<Double> outputList = new ArrayList<>();
         for (Double number : inputList) {
             if (outputList.size() == 0) {
