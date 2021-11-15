@@ -53,7 +53,7 @@ public class KolmogorovSmirnov {
         ObservableList<RowKolmogorov> rows = FXCollections.observableArrayList();
         valueBiggest = 0;
 
-        List<Double> listFii = KolmogorovSmirnovUtils.inverseList(numbers);
+        List<Double> listFii = KolmogorovSmirnovUtils.sortList(numbers);
         int sizeNumbers = numbers.size();
         for (int i = 0; i < sizeNumbers; i++) {
             String fiString = i+1 + "/" + sizeNumbers;

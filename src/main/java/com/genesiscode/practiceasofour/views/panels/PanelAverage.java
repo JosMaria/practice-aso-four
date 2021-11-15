@@ -125,6 +125,7 @@ public class PanelAverage extends Panel {
     private void click_btn_clear() {
         txtAreaNumbersAdded.setText("");
         average.clear();
+        setValueDefaultOfCounterTextArea();
     }
 
     private void click_btn_start() {
