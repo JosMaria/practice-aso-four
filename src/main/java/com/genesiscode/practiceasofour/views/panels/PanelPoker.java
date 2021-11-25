@@ -15,11 +15,15 @@ public class PanelPoker extends Panel {
     //Panel main
     private Pane paneMain;
 
-    //Controls by pane top left
+    //Controls by top left panel
     private static Button btnAdd, btnClear;
     private static TextField txtNumberAdd;
     private static TextArea txtAreaNumbersAdded;
     private static RadioButton rdoThreeDecimals, rdoFourDecimals, rdoFiveDecimals;
+
+    //Controls by top right panel
+    private static TextField txtLevelAcceptance;
+    private static Button btnStart;
 
     private PanelPoker() {
         super("Prueba de poker");
@@ -54,7 +58,8 @@ public class PanelPoker extends Panel {
         txtAreaNumbersAdded = new TextArea();
         txtAreaNumbersAdded.setWrapText(true);
         txtAreaNumbersAdded.setDisable(true);
-        txtAreaNumbersAdded.setMaxWidth(270);
+        txtAreaNumbersAdded.setMaxWidth(350);
+        txtAreaNumbersAdded.setMaxHeight(100);
 
         rdoThreeDecimals = new RadioButton("3 Dec");
         rdoFourDecimals = new RadioButton("4 Dec");
@@ -62,17 +67,24 @@ public class PanelPoker extends Panel {
         rdoThreeDecimals.setSelected(true);
 
         //top right panel
+        txtLevelAcceptance = new TextField();
+        txtLevelAcceptance.setPrefColumnCount(4);
+
+        btnStart = new Button("Comenzar");
+        btnStart.setOnAction(actionEvent -> click_btn_start());
+
         //pane bottom left
         //pane bottom right
     }
 
     private void buildPanel() {
         VBox radioButtonsPanel = new VBox(10, radioButtonsPanel());
-        VBox paneTop = new VBox(10, radioButtonsPanel,
-                PanelsCommons.paneTopLeft(txtNumberAdd, btnAdd, btnClear, txtAreaNumbersAdded));
-        paneTop.setAlignment(Pos.CENTER);
+        VBox topLeftPanel = new VBox(10, radioButtonsPanel, PanelsCommons.paneTopLeft(txtNumberAdd, btnAdd, btnClear, txtAreaNumbersAdded));
+        topLeftPanel.setAlignment(Pos.CENTER);
 
-        this.paneMain = new VBox(10, paneTop);
+        HBox topPanel = new HBox(10, topLeftPanel, topRightPanel());
+        topPanel.setAlignment(Pos.CENTER);
+        this.paneMain = topPanel;
     }
 
     private Pane radioButtonsPanel() {
@@ -91,11 +103,23 @@ public class PanelPoker extends Panel {
         return radioButtonsPanel;
     }
 
+    private VBox topRightPanel() {
+        HBox paneAcceptance = new HBox(10, new Label("Nivel de aceptación"), txtLevelAcceptance);
+        paneAcceptance.setAlignment(Pos.CENTER);
+        VBox pane = new VBox(10, paneAcceptance, btnStart);
+        pane.setAlignment(Pos.CENTER);
+        return pane;
+    }
+
     private void click_btn_clear() {
         System.out.println("Click in the button \"clear\"");
     }
 
     private void click_btn_add() {
         System.out.println("Click in the button \"add\"");
+    }
+
+    private void click_btn_start() {
+        System.out.println("Click in the button \"start\"");
     }
 }
