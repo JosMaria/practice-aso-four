@@ -42,4 +42,13 @@ public class Panel {
         }
         return numberAdded;
     }
+
+    protected void action_btn_add(TextArea txtAreaNumbers, String textToAdd) {
+        String oldText = txtAreaNumbers.getText();
+        if (oldText.length() == 0) {
+            txtAreaNumbers.setText(textToAdd);
+        } else {
+            txtAreaNumbers.setText(oldText + "  "+ textToAdd);
+        }
+    }
 }

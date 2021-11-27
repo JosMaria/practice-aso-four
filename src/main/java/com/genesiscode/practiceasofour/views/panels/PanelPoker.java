@@ -1,5 +1,9 @@
 package com.genesiscode.practiceasofour.views.panels;
 
+import com.genesiscode.practiceasofour.models.Poker;
+import com.genesiscode.practiceasofour.models.utils.PokerElement;
+import com.genesiscode.practiceasofour.models.utils.PokerUtils;
+import com.genesiscode.practiceasofour.views.panels.commons.MessageBox;
 import com.genesiscode.practiceasofour.views.panels.commons.PanelsCommons;
 import com.genesiscode.practiceasofour.views.panels.rows.RowPoker;
 import javafx.geometry.Insets;
@@ -15,6 +19,7 @@ import java.util.List;
 public class PanelPoker extends Panel {
 
     private static PanelPoker panelPoker;
+    private final Poker poker;
 
     private Pane paneMain;
 
@@ -34,8 +39,10 @@ public class PanelPoker extends Panel {
     //Controls by bottom right panel
     private static Label lblValueToResult, lblResult;
 
+
     private PanelPoker() {
         super("Prueba de poker");
+        poker = new Poker();
         loadControls();
         buildPanel();
     }
@@ -173,14 +180,60 @@ public class PanelPoker extends Panel {
     }
 
     private void click_btn_clear() {
+        poker.clear();
+        txtAreaNumbersAdded.setText("");
         System.out.println("Click in the button \"clear\"");
     }
 
     private void click_btn_add() {
-        System.out.println("Click in the button \"add\"");
+        String textNumber = txtNumberAdd.getText();
+        txtNumberAdd.setText("");
+        if (isCorrectTheSelectionGivenTheDecimal(textNumber)) {
+            if (isEqualToFirstElementIfExists(textNumber)) {
+                action_btn_add(txtAreaNumbersAdded, textNumber);
+                try {
+                    poker.addPokerElement(new PokerElement(Double.parseDouble(textNumber), textNumber));
+                } catch (NumberFormatException e) {
+                    MessageBox.show("El numero que se quiere agregar\ndebe tener formato decimal", "POKER");
+                }
+                System.out.println("Click in the button \"add\"");
+            } else {
+                MessageBox.show("El número para agregar no tiene la misma\ncantidad de decimales que los demas numeros", "POKER");
+            }
+        } else {
+            MessageBox.show(String.format("No se puede agregar este numero %s,\n ya que incumple las restricciones", textNumber), "POKER");
+        }
+    }
+
+    private boolean isCorrectTheSelectionGivenTheDecimal(String textNumberToAdd) {
+        if (rdoThreeDecimals.isSelected()) {
+            return PokerUtils.numberToAddIsCorrectWithTheCountOfDecimals(textNumberToAdd, 3);
+
+        } else if (rdoFourDecimals.isSelected()) {
+            return PokerUtils.numberToAddIsCorrectWithTheCountOfDecimals(textNumberToAdd, 4);
+
+        } else {
+            return PokerUtils.numberToAddIsCorrectWithTheCountOfDecimals(textNumberToAdd, 5);
+        }
+    }
+
+    private boolean isEqualToFirstElementIfExists(String textNumber) {
+        boolean isEquals = false;
+        try {
+            PokerElement firstElement = poker.getFirstElement();
+            String partDecimalFirstElement = PokerUtils.getPartDecimal(firstElement.getTextNumber());
+            String partDecimalNumberToAdd = PokerUtils.getPartDecimal(textNumber);
+            if (partDecimalFirstElement.length() == partDecimalNumberToAdd.length()) {
+                isEquals = true;
+            }
+        } catch (IndexOutOfBoundsException e) {
+            isEquals = true;
+        }
+        return isEquals;
     }
 
     private void click_btn_start() {
+        poker.start();
         System.out.println("Click in the button \"start\"");
     }
 }
