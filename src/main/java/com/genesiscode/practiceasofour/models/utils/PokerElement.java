@@ -9,7 +9,6 @@ public class PokerElement {
     private final double number;
     private final String textNumber;
     private Category category;
-    private double probability;
 
     public PokerElement(double number, String textNumber) {
         this.number = number;
@@ -41,69 +40,6 @@ public class PokerElement {
         } else {
             category = TD;
         }
-        loadProbability(textPartDecimal);
-    }
-
-    private void loadProbability(String textPartDecimal) {
-        switch (textPartDecimal.length()) {
-            case 3:
-                switch (category) {
-                    case TD:
-                        probability = 0.72;
-                        break;
-                    case _1P:
-                        probability = 0.27;
-                        break;
-                    case T:
-                        probability = 0.01;
-                        break;
-                }
-                break;
-            case 4:
-                switch (category) {
-                    case TD:
-                        probability = 0.5040;
-                        break;
-                    case _1P:
-                        probability = 0.4320;
-                        break;
-                    case _2P:
-                        probability = 0.0270;
-                        break;
-                    case T:
-                        probability = 0.0360;
-                        break;
-                    case P:
-                        probability = 0.0010;
-                        break;
-                }
-                break;
-            case 5:
-                switch(category) {
-                    case TD:
-                        probability = 0.3024;
-                        break;
-                    case _1P:
-                        probability = 0.5040;
-                        break;
-                    case _2P:
-                        probability = 0.1080;
-                        break;
-                    case TP:
-                        probability = 0.0090;
-                        break;
-                    case T:
-                        probability = 0.0720;
-                        break;
-                    case P:
-                        probability = 0.0045;
-                        break;
-                    case Q:
-                        probability = 0.0001;
-                        break;
-                }
-                break;
-        }
     }
 
     private boolean existsTwoPairs(HashMap<Integer, Integer> map) {
@@ -128,13 +64,8 @@ public class PokerElement {
         return category;
     }
 
-    public double getProbability() {
-        return probability;
-    }
-
     @Override
     public String toString() {
-        return String.format("PokerElement {number=%s, textNumber=%s, category=%s, probability=%s}",
-                number, textNumber, category, probability);
+        return String.format("PokerElement {number=%s, textNumber=%s, category=%s}", number, textNumber, category);
     }
 }

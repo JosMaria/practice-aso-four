@@ -20,9 +20,9 @@ public class PanelPoker extends Panel {
 
     private static PanelPoker panelPoker;
     private final Poker poker;
-
+    private int numberOfCategories;
     private Pane paneMain;
-
+    private final static String MESSAGE = "Se rechaza la hipotesis de que los numeros provienen de una distribucion independiente";
     //Controls by top left panel
     private static Button btnAdd, btnClear;
     private static TextField txtNumberAdd;
@@ -91,7 +91,7 @@ public class PanelPoker extends Panel {
 
         //bottom left panel
         tableData = new TableView<>();
-        tableData.setMaxHeight(300);
+        tableData.setMaxHeight(200);
 
         //pane bottom right
         lblValueToResult = new Label();
@@ -182,7 +182,6 @@ public class PanelPoker extends Panel {
     private void click_btn_clear() {
         poker.clear();
         txtAreaNumbersAdded.setText("");
-        System.out.println("Click in the button \"clear\"");
     }
 
     private void click_btn_add() {
@@ -192,11 +191,11 @@ public class PanelPoker extends Panel {
             if (isEqualToFirstElementIfExists(textNumber)) {
                 action_btn_add(txtAreaNumbersAdded, textNumber);
                 try {
+                    poker.setDegreesOfFreedom(numberOfCategories);
                     poker.addPokerElement(new PokerElement(Double.parseDouble(textNumber), textNumber));
                 } catch (NumberFormatException e) {
                     MessageBox.show("El numero que se quiere agregar\ndebe tener formato decimal", "POKER");
                 }
-                System.out.println("Click in the button \"add\"");
             } else {
                 MessageBox.show("El número para agregar no tiene la misma\ncantidad de decimales que los demas numeros", "POKER");
             }
@@ -206,15 +205,24 @@ public class PanelPoker extends Panel {
     }
 
     private boolean isCorrectTheSelectionGivenTheDecimal(String textNumberToAdd) {
+        boolean isCorrect;
         if (rdoThreeDecimals.isSelected()) {
-            return PokerUtils.numberToAddIsCorrectWithTheCountOfDecimals(textNumberToAdd, 3);
-
+            isCorrect = PokerUtils.numberToAddIsCorrectWithTheCountOfDecimals(textNumberToAdd, 3);
+            if (isCorrect) {
+                numberOfCategories = 2;
+            }
         } else if (rdoFourDecimals.isSelected()) {
-            return PokerUtils.numberToAddIsCorrectWithTheCountOfDecimals(textNumberToAdd, 4);
-
+            isCorrect = PokerUtils.numberToAddIsCorrectWithTheCountOfDecimals(textNumberToAdd, 4);
+            if (isCorrect) {
+                numberOfCategories = 4;
+            }
         } else {
-            return PokerUtils.numberToAddIsCorrectWithTheCountOfDecimals(textNumberToAdd, 5);
+            isCorrect = PokerUtils.numberToAddIsCorrectWithTheCountOfDecimals(textNumberToAdd, 5);
+            if (isCorrect) {
+                numberOfCategories = 6;
+            }
         }
+        return isCorrect;
     }
 
     private boolean isEqualToFirstElementIfExists(String textNumber) {
@@ -233,7 +241,23 @@ public class PanelPoker extends Panel {
     }
 
     private void click_btn_start() {
-        poker.start();
-        System.out.println("Click in the button \"start\"");
+        if (txtAreaNumbersAdded.getLength() != 0 && txtLevelAcceptance.getLength() != 0) {
+            try {
+                poker.setLevelAcceptance(Integer.parseInt(txtLevelAcceptance.getText()));
+            } catch (NumberFormatException e) {
+                MessageBox.show("El nivel de aceptación debe ser un numero entero", "POKER");
+            }
+            tableData.setItems(poker.getTableResult());
+            lblValueToResult.setText(String.format("X²o < X²%s,%s",
+                    poker.getLevelAcceptanceInDecimals(), poker.getDegreesOfFreedom()));
+            double resultFinal = poker.getResultFinal();
+            double resultAlpha = poker.getResultAlpha();
+            lblResult.setText(String.format("%s < %s", resultFinal, resultAlpha));
+            if (resultFinal < resultAlpha) {
+                MessageBox.show(MESSAGE, "POKER");
+            }
+        } else {
+            MessageBox.show("Se debe agregar todos los datos necesarios", "POKER");
+        }
     }
 }

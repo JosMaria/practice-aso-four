@@ -72,4 +72,28 @@ class PokerUtilsTest {
                 arguments("654", Map.of(6, 1, 5, 1, 4, 1))
         );
     }
+
+    @ParameterizedTest(name = "#{index} - Test: textNumber={0}, category={1}, probability={2}")
+    @MethodSource("getItsProbabilityProvider")
+    void getItsProbabilityTest(int countDecimals, Category category, double probabilityExpected) {
+        //WHEN
+        double probabilityActual = PokerUtils.getItsProbability(category, countDecimals);
+
+        //THEN
+        assertThat(probabilityActual).isEqualTo(probabilityExpected);
+    }
+
+    static Stream<Arguments> getItsProbabilityProvider() {
+        return Stream.of(
+                arguments(3, Category._1P, 0.27),
+                arguments(3, Category.TD, 0.72),
+                arguments(3, Category.T, 0.01),
+
+                arguments(4, Category.TD, 0.5040),
+                arguments(4, Category._1P, 0.4320),
+                arguments(4, Category._2P, 0.0270),
+                arguments(4, Category.T, 0.0360),
+                arguments(4, Category.P, 0.0010)
+        );
+    }
 }

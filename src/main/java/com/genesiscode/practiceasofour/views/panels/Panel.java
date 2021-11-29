@@ -48,7 +48,7 @@ public class Panel {
         if (oldText.length() == 0) {
             txtAreaNumbers.setText(textToAdd);
         } else {
-            txtAreaNumbers.setText(oldText + "  "+ textToAdd);
+            txtAreaNumbers.setText(oldText + "  " + textToAdd);
         }
     }
 }
