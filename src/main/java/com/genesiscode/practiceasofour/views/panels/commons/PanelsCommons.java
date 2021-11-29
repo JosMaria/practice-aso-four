@@ -12,7 +12,9 @@ public class PanelsCommons {
 
     public static VBox paneTopLeft(TextField txtNumberAdd, Button btnAdd, Button  btnClear,
                                     TextArea txtAreaNumbersAdded) {
-        VBox paneBottom = new VBox(10, new HBox(10, txtNumberAdd, btnAdd, btnClear), txtAreaNumbersAdded);
+        HBox pane = new HBox(10, txtNumberAdd, btnAdd, btnClear);
+        pane.setAlignment(Pos.CENTER);
+        VBox paneBottom = new VBox(10, pane, txtAreaNumbersAdded);
         paneBottom.setPadding(new Insets(0, 20, 20, 20));
         paneBottom.setAlignment(Pos.CENTER);
         return paneBottom;
