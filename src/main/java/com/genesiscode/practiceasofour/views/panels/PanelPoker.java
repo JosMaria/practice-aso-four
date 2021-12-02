@@ -109,7 +109,7 @@ public class PanelPoker extends Panel {
         HBox bottomPanel = new HBox(10, bottomLeftPanel(), bottomRightPanel());
         bottomPanel.setAlignment(Pos.CENTER);
 
-        VBox paneMain = new VBox(topPanel, bottomPanel);
+        VBox paneMain = new VBox(lblHeader, topPanel, bottomPanel);
         paneMain.setAlignment(Pos.CENTER);
 
         this.paneMain = paneMain;

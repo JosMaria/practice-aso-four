@@ -44,6 +44,13 @@ public class DistributionX2 {
         map.put(new KeyDistributionX2(0.005, 4), 14.860);
         map.put(new KeyDistributionX2(0.001, 4), 18.467);
 
+        map.put(new KeyDistributionX2(0.10, 5), 9.236);
+        map.put(new KeyDistributionX2(0.05, 5), 11.070);
+        map.put(new KeyDistributionX2(0.025, 5), 12.833);
+        map.put(new KeyDistributionX2(0.01, 5), 15.086);
+        map.put(new KeyDistributionX2(0.005, 5), 16.750);
+        map.put(new KeyDistributionX2(0.001, 5), 20.515);
+
         map.put(new KeyDistributionX2(0.10, 6), 10.645);
         map.put(new KeyDistributionX2(0.05, 6), 12.592);
         map.put(new KeyDistributionX2(0.025, 6), 14.449);

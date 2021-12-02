@@ -54,7 +54,6 @@ public class Poker {
     }
 
     public void clear() {
-        pokerElements.forEach(System.out::println);
         pokerElements.clear();
     }
 

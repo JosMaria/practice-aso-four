@@ -22,7 +22,7 @@ public class GapTest {
         int[] arrayGiven = {1,1,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1};
 
         //WHEN
-        List<Integer> listActual = gap.getList(arrayGiven);
+        List<Integer> listActual = gap.getListOfFrequencies(arrayGiven);
 
         //WHEN
         assertThat(listActual).containsExactly(0, 7, 1, 1, 10, 0, 3);
@@ -34,7 +34,7 @@ public class GapTest {
         int[] arrayGiven = {0,0,0,1,1};
 
         //WHEN
-        List<Integer> listActual = gap.getList(arrayGiven);
+        List<Integer> listActual = gap.getListOfFrequencies(arrayGiven);
 
         //THEN
         assertThat(listActual).containsExactly(3, 0);
@@ -46,7 +46,7 @@ public class GapTest {
         int[] arrayGiven = {1,1,1,1,0};
 
         //WHEN
-        List<Integer> listActual = gap.getList(arrayGiven);
+        List<Integer> listActual = gap.getListOfFrequencies(arrayGiven);
 
         //THEN
         assertThat(listActual).containsExactly(0,1);
@@ -58,7 +58,7 @@ public class GapTest {
         int[] arrayGiven = {1,0,0,0};
 
         //WHEN
-        List<Integer> listActual = gap.getList(arrayGiven);
+        List<Integer> listActual = gap.getListOfFrequencies(arrayGiven);
 
         //THEN
         assertThat(listActual).containsExactly(3);

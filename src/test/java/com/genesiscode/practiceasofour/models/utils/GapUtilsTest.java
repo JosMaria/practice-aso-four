@@ -1,12 +1,15 @@
 package com.genesiscode.practiceasofour.models.utils;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class GapUtilsTest {
 
@@ -28,9 +31,32 @@ class GapUtilsTest {
                                     0, 0, 0, 0, 1,
                                     1, 0, 0, 0, 1 };
         //WHEN
-        int[] numbersActual = GapUtils.nothingName(alpha, beta, numbers1);
+        int[] numbersActual = GapUtils.arrayOfOnesAndZeros(alpha, beta, numbers1);
 
         //THEN
         assertThat(numbersActual).containsExactly(numbersExpected);
+    }
+
+    @ParameterizedTest(name = "#{index} - Test: frequencies={0}, value={1}, frequency={2}")
+    @MethodSource("countNumberInListProvider")
+    void countNumberInListTest(List<Integer> frequencies, int value, int frequency) {
+        //WHEN
+        int frequencyActual = GapUtils.countNumberInList(frequencies, value);
+
+        //THEN
+        assertThat(frequencyActual).isEqualTo(frequency);
+    }
+
+    static Stream<Arguments> countNumberInListProvider() {
+        //GIVEN
+        List<Integer> frequencies = List.of(0, 7, 1, 1, 10, 0, 3);
+        return Stream.of(
+                arguments(frequencies, 0, 2),
+                arguments(frequencies, 1, 2),
+                arguments(frequencies, 2, 0),
+                arguments(frequencies, 3, 1),
+                arguments(frequencies, 4, 0),
+                arguments(frequencies, 5, 2)
+        );
     }
 }
