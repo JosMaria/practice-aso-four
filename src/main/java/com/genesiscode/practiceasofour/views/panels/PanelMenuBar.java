@@ -98,8 +98,7 @@ public class PanelMenuBar implements EventHandler<ActionEvent> {
             System.out.println("This is menu item poker");
 
         } else if (source.equals(menuItemGap)) {
-            panelGap = PanelGap.getInstance();
-            setPaneBottom(new VBox(panelGap.getLblHeader()));
+            setPaneBottom(PanelGap.getInstance().getPaneMain());
             System.out.println("This is menu item gap");
         }
     }
