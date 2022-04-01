@@ -7,10 +7,6 @@ import javafx.stage.Stage;
 
 public class WindowMain extends Application {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     @Override
     public void start(Stage stage) {
         PanelMenuBar panelMenuBar = new PanelMenuBar();
