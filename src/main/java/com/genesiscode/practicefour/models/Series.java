@@ -1,11 +1,11 @@
-package com.genesiscode.practiceasofour.models;
+package com.genesiscode.practicefour.models;
 
-import com.genesiscode.practiceasofour.models.formulas.TableSeries;
-import com.genesiscode.practiceasofour.models.utils.Decimal;
-import com.genesiscode.practiceasofour.models.utils.SeriesCell;
-import com.genesiscode.practiceasofour.models.utils.SeriesPair;
-import com.genesiscode.practiceasofour.models.utils.SeriesUtils;
-import com.genesiscode.practiceasofour.views.panels.rows.RowSeries;
+import com.genesiscode.practicefour.models.formulas.TableSeries;
+import com.genesiscode.practicefour.models.utils.Decimal;
+import com.genesiscode.practicefour.models.utils.SeriesCell;
+import com.genesiscode.practicefour.models.utils.SeriesPair;
+import com.genesiscode.practicefour.models.utils.SeriesUtils;
+import com.genesiscode.practicefour.views.panels.rows.RowSeries;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

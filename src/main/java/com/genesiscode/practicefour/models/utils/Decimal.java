@@ -1,4 +1,4 @@
-package com.genesiscode.practiceasofour.models.utils;
+package com.genesiscode.practicefour.models.utils;
 
 import java.text.DecimalFormat;
 

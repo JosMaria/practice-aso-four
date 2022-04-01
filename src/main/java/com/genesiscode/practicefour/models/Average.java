@@ -1,7 +1,7 @@
-package com.genesiscode.practiceasofour.models;
+package com.genesiscode.practicefour.models;
 
-import com.genesiscode.practiceasofour.models.utils.AverageUtils;
-import com.genesiscode.practiceasofour.views.panels.rows.RowAverage;
+import com.genesiscode.practicefour.models.utils.AverageUtils;
+import com.genesiscode.practicefour.views.panels.rows.RowAverage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

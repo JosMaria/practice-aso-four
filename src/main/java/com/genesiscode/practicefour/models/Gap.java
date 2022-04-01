@@ -1,10 +1,10 @@
-package com.genesiscode.practiceasofour.models;
+package com.genesiscode.practicefour.models;
 
-import com.genesiscode.practiceasofour.models.formulas.DistributionX2;
-import com.genesiscode.practiceasofour.models.formulas.KeyDistributionX2;
-import com.genesiscode.practiceasofour.models.utils.Decimal;
-import com.genesiscode.practiceasofour.models.utils.GapUtils;
-import com.genesiscode.practiceasofour.views.panels.rows.RowGap;
+import com.genesiscode.practicefour.models.formulas.DistributionX2;
+import com.genesiscode.practicefour.models.formulas.KeyDistributionX2;
+import com.genesiscode.practicefour.models.utils.Decimal;
+import com.genesiscode.practicefour.models.utils.GapUtils;
+import com.genesiscode.practicefour.views.panels.rows.RowGap;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -35,10 +35,10 @@ public class Gap {
         this.confidenceLevel = confidenceLevel;
     }
     public double getOneMinusConfidenceLevel() {
-        return 1 - confidenceLevel;
+        return (double) (100 - confidenceLevel) / 100;
     }
     public double getSummation() {
-        return summation;
+        return Decimal.getDecimal(4, summation);
     }
 
     public void addNumber(double number) {

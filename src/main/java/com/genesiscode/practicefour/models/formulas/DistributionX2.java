@@ -1,4 +1,4 @@
-package com.genesiscode.practiceasofour.models.formulas;
+package com.genesiscode.practicefour.models.formulas;
 
 import java.util.HashMap;
 import java.util.Map;

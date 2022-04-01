@@ -1,12 +1,12 @@
-package com.genesiscode.practiceasofour.models;
+package com.genesiscode.practicefour.models;
 
-import com.genesiscode.practiceasofour.models.formulas.DistributionX2;
-import com.genesiscode.practiceasofour.models.formulas.KeyDistributionX2;
-import com.genesiscode.practiceasofour.models.utils.Category;
-import com.genesiscode.practiceasofour.models.utils.Decimal;
-import com.genesiscode.practiceasofour.models.utils.PokerElement;
-import com.genesiscode.practiceasofour.models.utils.PokerUtils;
-import com.genesiscode.practiceasofour.views.panels.rows.RowPoker;
+import com.genesiscode.practicefour.models.formulas.DistributionX2;
+import com.genesiscode.practicefour.models.formulas.KeyDistributionX2;
+import com.genesiscode.practicefour.models.utils.Category;
+import com.genesiscode.practicefour.models.utils.Decimal;
+import com.genesiscode.practicefour.models.utils.PokerElement;
+import com.genesiscode.practicefour.models.utils.PokerUtils;
+import com.genesiscode.practicefour.views.panels.rows.RowPoker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -38,7 +38,7 @@ public class Poker {
         return pokerElements.get(FIRST_ELEMENT);
     }
     public double getLevelAcceptanceInDecimals() {
-        return (double) levelAcceptance / 100;
+        return (double) (100 - levelAcceptance) / 100;
     }
     public void setLevelAcceptance(int levelAcceptance) {
         this.levelAcceptance = levelAcceptance;

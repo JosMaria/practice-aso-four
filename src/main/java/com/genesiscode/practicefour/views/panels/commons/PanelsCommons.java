@@ -1,4 +1,4 @@
-package com.genesiscode.practiceasofour.views.panels.commons;
+package com.genesiscode.practicefour.views.panels.commons;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

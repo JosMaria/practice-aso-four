@@ -1,8 +1,8 @@
-package com.genesiscode.practiceasofour.models.utils;
+package com.genesiscode.practicefour.models.utils;
 
 import java.util.HashMap;
 
-import static com.genesiscode.practiceasofour.models.utils.Category.*;
+import static com.genesiscode.practicefour.models.utils.Category.*;
 
 public class PokerElement {
 

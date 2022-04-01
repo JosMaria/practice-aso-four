@@ -1,6 +1,6 @@
-package com.genesiscode.practiceasofour.models.utils;
+package com.genesiscode.practicefour.models.utils;
 
-import com.genesiscode.practiceasofour.models.formulas.Areas;
+import com.genesiscode.practicefour.models.formulas.Areas;
 
 import java.text.DecimalFormat;
 import java.util.List;

@@ -1,10 +1,10 @@
-package com.genesiscode.practiceasofour.models;
+package com.genesiscode.practicefour.models;
 
-import com.genesiscode.practiceasofour.models.formulas.DistributionX2;
-import com.genesiscode.practiceasofour.models.formulas.KeyDistributionX2;
-import com.genesiscode.practiceasofour.models.utils.FrequencyUtils;
-import com.genesiscode.practiceasofour.views.panels.rows.RowFrequency;
-import com.genesiscode.practiceasofour.views.panels.rows.RowFrequencyInterval;
+import com.genesiscode.practicefour.models.formulas.DistributionX2;
+import com.genesiscode.practicefour.models.formulas.KeyDistributionX2;
+import com.genesiscode.practicefour.models.utils.FrequencyUtils;
+import com.genesiscode.practicefour.views.panels.rows.RowFrequency;
+import com.genesiscode.practicefour.views.panels.rows.RowFrequencyInterval;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

@@ -1,4 +1,4 @@
-package com.genesiscode.practiceasofour.views.panels.rows;
+package com.genesiscode.practicefour.views.panels.rows;
 
 public class RowFrequency {
 

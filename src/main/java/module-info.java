@@ -1,7 +1,7 @@
 module com.example.practiceasofour {
     requires javafx.controls;
 
-    opens com.genesiscode.practiceasofour.views;
-    opens com.genesiscode.practiceasofour.views.panels;
-    opens com.genesiscode.practiceasofour.views.panels.rows;
+    opens com.genesiscode.practicefour.views;
+    opens com.genesiscode.practicefour.views.panels;
+    opens com.genesiscode.practicefour.views.panels.rows;
 }

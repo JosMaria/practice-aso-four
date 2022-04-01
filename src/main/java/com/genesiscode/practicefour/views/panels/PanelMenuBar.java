@@ -1,7 +1,8 @@
-package com.genesiscode.practiceasofour.views.panels;
+package com.genesiscode.practicefour.views.panels;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -79,27 +80,21 @@ public class PanelMenuBar implements EventHandler<ActionEvent> {
 
         if (source.equals(menuItemAverage)) {
             setPaneBottom(PanelAverage.getInstance().getPaneMain());
-            System.out.println("This is menu item average");
 
         } else if (source.equals(menuItemFrequency)) {
             setPaneBottom(PanelFrequency.getInstance().getPaneMain());
-            System.out.println("This is menu item frequency");
 
         } else if (source.equals(menuItemKolmogorov)) {
             setPaneBottom(PanelKolmogorov.getInstance().getPaneMain());
-            System.out.println("This is menu item kolmogorov");
 
         } else if(source.equals(menuItemSeries)) {
             setPaneBottom(PanelSeries.getInstance().getPaneMain());
-            System.out.println("This is menu item series");
 
         } else if (source.equals(menuItemPoker)) {
             setPaneBottom(PanelPoker.getInstance().getPaneMain());
-            System.out.println("This is menu item poker");
 
         } else if (source.equals(menuItemGap)) {
             setPaneBottom(PanelGap.getInstance().getPaneMain());
-            System.out.println("This is menu item gap");
         }
     }
 }

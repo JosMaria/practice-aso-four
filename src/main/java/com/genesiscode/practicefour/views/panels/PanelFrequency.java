@@ -1,9 +1,9 @@
-package com.genesiscode.practiceasofour.views.panels;
+package com.genesiscode.practicefour.views.panels;
 
-import com.genesiscode.practiceasofour.models.Frequency;
-import com.genesiscode.practiceasofour.views.panels.commons.PanelsCommons;
-import com.genesiscode.practiceasofour.views.panels.rows.RowFrequency;
-import com.genesiscode.practiceasofour.views.panels.rows.RowFrequencyInterval;
+import com.genesiscode.practicefour.models.Frequency;
+import com.genesiscode.practicefour.views.panels.commons.PanelsCommons;
+import com.genesiscode.practicefour.views.panels.rows.RowFrequency;
+import com.genesiscode.practicefour.views.panels.rows.RowFrequencyInterval;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;

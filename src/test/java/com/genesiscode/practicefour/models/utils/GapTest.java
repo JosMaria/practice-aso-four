@@ -1,6 +1,6 @@
-package com.genesiscode.practiceasofour.models.utils;
+package com.genesiscode.practicefour.models.utils;
 
-import com.genesiscode.practiceasofour.models.Gap;
+import com.genesiscode.practicefour.models.Gap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.List;

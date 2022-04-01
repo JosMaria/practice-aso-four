@@ -1,8 +1,8 @@
-package com.genesiscode.practiceasofour.views.panels;
+package com.genesiscode.practicefour.views.panels;
 
-import com.genesiscode.practiceasofour.models.Average;
-import com.genesiscode.practiceasofour.views.panels.commons.PanelsCommons;
-import com.genesiscode.practiceasofour.views.panels.rows.RowAverage;
+import com.genesiscode.practicefour.models.Average;
+import com.genesiscode.practicefour.views.panels.commons.PanelsCommons;
+import com.genesiscode.practicefour.views.panels.rows.RowAverage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;

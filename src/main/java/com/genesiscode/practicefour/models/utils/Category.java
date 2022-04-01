@@ -1,4 +1,4 @@
-package com.genesiscode.practiceasofour.models.utils;
+package com.genesiscode.practicefour.models.utils;
 
 public enum Category {
     TD("Todos diferentes"),

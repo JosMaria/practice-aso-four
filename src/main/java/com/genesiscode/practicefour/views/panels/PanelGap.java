@@ -1,9 +1,9 @@
-package com.genesiscode.practiceasofour.views.panels;
+package com.genesiscode.practicefour.views.panels;
 
-import com.genesiscode.practiceasofour.models.Gap;
-import com.genesiscode.practiceasofour.views.panels.commons.MessageBox;
-import com.genesiscode.practiceasofour.views.panels.commons.PanelsCommons;
-import com.genesiscode.practiceasofour.views.panels.rows.RowGap;
+import com.genesiscode.practicefour.models.Gap;
+import com.genesiscode.practicefour.views.panels.commons.MessageBox;
+import com.genesiscode.practicefour.views.panels.commons.PanelsCommons;
+import com.genesiscode.practicefour.views.panels.rows.RowGap;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;

@@ -1,8 +1,8 @@
-package com.genesiscode.practiceasofour.models;
+package com.genesiscode.practicefour.models;
 
-import com.genesiscode.practiceasofour.models.formulas.TableKolmogorovSmirnov;
-import com.genesiscode.practiceasofour.models.utils.KolmogorovSmirnovUtils;
-import com.genesiscode.practiceasofour.views.panels.rows.RowKolmogorov;
+import com.genesiscode.practicefour.models.formulas.TableKolmogorovSmirnov;
+import com.genesiscode.practicefour.models.utils.KolmogorovSmirnovUtils;
+import com.genesiscode.practicefour.views.panels.rows.RowKolmogorov;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -59,10 +59,8 @@ public class KolmogorovSmirnov {
             String fiString = i+1 + "/" + sizeNumbers;
             double fi = (double) (i + 1) / sizeNumbers;
             double fiValue = Double.parseDouble(decimalFormat.format(fi));
-            System.out.println(fiValue);
             double fiiValue = listFii.get(i);
             double result = fiValue - fiiValue;
-            System.out.println(result);
             double resultAbsolute = result < 0.0 ? result * -1 : result;
             if (resultAbsolute > valueBiggest) {
                 valueBiggest = resultAbsolute;

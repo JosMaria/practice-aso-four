@@ -1,6 +1,6 @@
-package com.genesiscode.practiceasofour.views;
+package com.genesiscode.practicefour.views;
 
-import com.genesiscode.practiceasofour.views.panels.PanelMenuBar;
+import com.genesiscode.practicefour.views.panels.PanelMenuBar;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

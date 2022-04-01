@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.genesiscode</groupId>
-    <artifactId>practice-aso-four</artifactId>
+    <artifactId>practice-four</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>practice-aso-four</name>
 
@@ -75,7 +75,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.practiceasofour.Main</mainClass>
+                            <mainClass>com.genesiscode.practicefour.Main</mainClass>
                         </configuration>
                     </execution>
                 </executions>

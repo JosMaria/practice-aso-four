@@ -1,9 +1,9 @@
-package com.genesiscode.practiceasofour.views.panels;
+package com.genesiscode.practicefour.views.panels;
 
-import com.genesiscode.practiceasofour.models.KolmogorovSmirnov;
-import com.genesiscode.practiceasofour.views.panels.commons.MessageBox;
-import com.genesiscode.practiceasofour.views.panels.commons.PanelsCommons;
-import com.genesiscode.practiceasofour.views.panels.rows.RowKolmogorov;
+import com.genesiscode.practicefour.models.KolmogorovSmirnov;
+import com.genesiscode.practicefour.views.panels.commons.MessageBox;
+import com.genesiscode.practicefour.views.panels.commons.PanelsCommons;
+import com.genesiscode.practicefour.views.panels.rows.RowKolmogorov;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -110,7 +110,8 @@ public class PanelKolmogorov extends Panel {
 
         txtAreaNumbersAdded = new TextArea();
         txtAreaNumbersAdded.setDisable(true);
-        txtAreaNumbersAdded.setMaxHeight(90);
+        txtAreaNumbersAdded.setMinHeight(90);
+        txtAreaNumbersAdded.setPrefWidth(100);
 
         //pane top right
         lblAlpha = new Label("alfa (α%)");

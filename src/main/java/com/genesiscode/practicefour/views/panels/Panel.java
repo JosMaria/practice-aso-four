@@ -1,4 +1,4 @@
-package com.genesiscode.practiceasofour.views.panels;
+package com.genesiscode.practicefour.views.panels;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
