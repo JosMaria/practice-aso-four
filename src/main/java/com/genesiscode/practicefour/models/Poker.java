@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,8 +31,8 @@ public class Poker {
         distributionX2 = DistributionX2.getInstance();
     }
 
-    public void addPokerElement(PokerElement element) {
-        pokerElements.add(element);
+    public void addPokerElements(Collection<PokerElement> elements) {
+        pokerElements.addAll(elements);
     }
 
     public PokerElement getFirstElement() {

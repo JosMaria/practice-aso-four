@@ -91,8 +91,8 @@ public class Series {
         double fe = getFrequencyExpected();
         int counterRow = 1;
         for (int i = 0; i < k; i++) {
-            for (int j = 0; j < k; j++, counterRow++) {
-                int fo = seriesCells[i][j].getValue();
+            for (int j = k - 1; j >= 0; j--, counterRow++) {
+                int fo = seriesCells[j][i].getValue();
                 double result = Math.pow(fo - fe, 2) / fe;
                 result = Decimal.getDecimal(2, result);
                 if (result < 0.0) {

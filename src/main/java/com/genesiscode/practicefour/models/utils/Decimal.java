@@ -1,6 +1,7 @@
 package com.genesiscode.practicefour.models.utils;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 public class Decimal {
 
@@ -11,5 +12,13 @@ public class Decimal {
 
     private static String getHash(int count) {
         return "#".repeat(Math.max(0, count));
+    }
+
+    public static double[] inputNumbersToArray(String inputNumbers) {
+        String[] numbersText = inputNumbers.split(" ");
+        return Arrays.stream(numbersText)
+                .map(String::trim)
+                .mapToDouble(Double::parseDouble)
+                .toArray();
     }
 }
