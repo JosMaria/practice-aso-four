@@ -33,9 +33,7 @@ public class PanelPoker extends Panel {
     private final static String MESSAGE = "Se rechaza la hipotesis de que los numeros provienen de una distribucion independiente";
     //Controls by top left panel
     private static Button btnVerify, btnClear;
-    private static TextField txtNumberAdd;
-    private static TextArea txtAreaNumbersAdded;
-    private TextArea txtAreaNumbers;
+    private TextArea txtAreaNumbers, txtAreaOutput;
 
     private static RadioButton rdoThreeDecimals, rdoFourDecimals, rdoFiveDecimals;
 
@@ -72,25 +70,22 @@ public class PanelPoker extends Panel {
     @Override
     protected void loadControls() {
         //top left panel
-        txtNumberAdd = new TextField();
-        txtNumberAdd.setPrefColumnCount(6);
-
         btnVerify = new Button("Verificar");
         btnVerify.setOnAction(actionEvent -> click_btn_verify());
 
         btnClear = new Button("Limpiar");
         btnClear.setOnAction(actionEvent -> click_btn_clear());
 
-        txtAreaNumbersAdded = new TextArea();
-        txtAreaNumbersAdded.setWrapText(true);
-        txtAreaNumbersAdded.setDisable(true);
-        txtAreaNumbersAdded.setMaxWidth(350);
-        txtAreaNumbersAdded.setMaxHeight(100);
-
         txtAreaNumbers = new TextArea();
         txtAreaNumbers.setWrapText(true);
         txtAreaNumbers.setMaxWidth(450);
         txtAreaNumbers.setMaxHeight(200);
+
+        txtAreaOutput = new TextArea();
+        txtAreaOutput.setWrapText(true);
+        txtAreaOutput.setMaxWidth(650);
+        txtAreaOutput.setMaxHeight(250);
+        txtAreaOutput.setEditable(false);
 
         rdoThreeDecimals = new RadioButton("3 Dec");
         rdoFourDecimals = new RadioButton("4 Dec");
@@ -124,7 +119,10 @@ public class PanelPoker extends Panel {
         HBox bottomPanel = new HBox(10, bottomLeftPanel(), bottomRightPanel());
         bottomPanel.setAlignment(Pos.CENTER);
 
-        VBox paneMain = new VBox(lblHeader, topPanel, bottomPanel);
+        VBox centerPane = new VBox(10, new Label("=== SALIDA ==="), txtAreaOutput);
+        centerPane.setAlignment(Pos.CENTER);
+
+        VBox paneMain = new VBox(lblHeader, topPanel, centerPane, bottomPanel);
         paneMain.setAlignment(Pos.CENTER);
 
         this.paneMain = paneMain;
@@ -263,6 +261,18 @@ public class PanelPoker extends Panel {
         if (resultFinal < resultAlpha) {
             MessageBox.show(MESSAGE, "POKER");
         }
+        buildAreaTextOutput();
+    }
+
+    private void buildAreaTextOutput() {
+        StringBuilder builder = new StringBuilder();
+        poker.getPokerElements()
+                .forEach(element -> builder.append(elementToString(element.getTextNumber(), element.getCategory().name())));
+        txtAreaOutput.setText(builder.toString());
+    }
+
+    private String elementToString(String textNumber, String textCategory) {
+        return String.format("( %s | %s )   ", textNumber, textCategory);
     }
 
 }

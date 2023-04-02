@@ -92,4 +92,8 @@ public class Poker {
         return distributionX2.getValue(new KeyDistributionX2
                 (getLevelAcceptanceInDecimals(), getDegreesOfFreedom()));
     }
+
+    public List<PokerElement> getPokerElements() {
+        return pokerElements;
+    }
 }
