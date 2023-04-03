@@ -9,6 +9,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class Gap {
@@ -19,6 +21,7 @@ public class Gap {
     private int confidenceLevel;
     private final DistributionX2 distributionX2;
     private double summation;
+    private String stringNumbers;
 
     public Gap() {
         numbers = new ArrayList<>();
@@ -41,9 +44,10 @@ public class Gap {
         return Decimal.getDecimal(4, summation);
     }
 
-    public void addNumber(double number) {
-        numbers.add(number);
+    public void addNumbers(Collection<Double> numbers) {
+        this.numbers.addAll(numbers);
     }
+
     public void clear() {
         numbers.clear();
     }
@@ -90,6 +94,7 @@ public class Gap {
         ObservableList<RowGap> rows = FXCollections.observableArrayList();
         summation = 0;
         int[] onesAndZeros = GapUtils.arrayOfOnesAndZeros(alpha, beta, numbers);
+        stringNumbers = Arrays.toString(onesAndZeros);
         List<Integer> listOfFrequencies = getListOfFrequencies(onesAndZeros);
         int h = listOfFrequencies.size();
         for (int i = 0; i < 6; i++) {
@@ -118,5 +123,9 @@ public class Gap {
 
     public double getResultAlpha() {
         return distributionX2.getValue(new KeyDistributionX2(getOneMinusConfidenceLevel(), 5));
+    }
+
+    public String getStringNumbers() {
+        return stringNumbers;
     }
 }

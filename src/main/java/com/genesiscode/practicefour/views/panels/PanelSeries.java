@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -139,6 +140,7 @@ public class PanelSeries extends Panel {
         lblResult = new Label();
 
         lblMatrix = new Label();
+        lblMatrix.setFont(new Font("Gargi", 20));
     }
 
     private void click_btn_add() {
@@ -194,7 +196,7 @@ public class PanelSeries extends Panel {
             for (String value : row) {
                 builder.append(String.format("|  %s  ", value));
             }
-            builder.append(" |\n\n");
+            builder.append(" |\n");
         }
         lblMatrix.setText(builder.toString());
     }

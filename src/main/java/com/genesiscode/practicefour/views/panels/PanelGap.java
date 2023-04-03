@@ -11,8 +11,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PanelGap extends Panel {
 
@@ -23,7 +27,6 @@ public class PanelGap extends Panel {
 
     //Controls by top left panel
     private static Button btnAdd, btnClear;
-    private static TextField txtNumberAdd;
     private static TextArea txtAreaNumbersAdded;
 
     //Controls by top right panel
@@ -32,7 +35,7 @@ public class PanelGap extends Panel {
 
     //Controls by bottom left panel
     private static TableView<RowGap> tableData;
-    private Label lblValueToResult, lblResult;
+    private Label lblValueToResult, lblResult, lblStringNumbers;
 
     private PanelGap() {
         super("Prueba de huecos");
@@ -53,7 +56,7 @@ public class PanelGap extends Panel {
     }
 
     private void buildPanel() {
-        VBox topLeftPanel = new VBox(10, PanelsCommons.paneTopLeft(txtNumberAdd, btnAdd, btnClear, txtAreaNumbersAdded));
+        VBox topLeftPanel = new VBox(10, txtAreaNumbersAdded, new HBox(10, btnAdd, btnClear));
         topLeftPanel.setAlignment(Pos.CENTER);
 
         HBox topPanel = new HBox(20, topLeftPanel, topRightPanel());
@@ -62,20 +65,20 @@ public class PanelGap extends Panel {
         HBox bottomPanel = new HBox(20, bottomLeftPanel(), bottomRightPanel());
         bottomPanel.setAlignment(Pos.CENTER);
 
-        VBox paneMain = new VBox(lblHeader, topPanel, bottomPanel);
+        HBox centerPane = new HBox(lblStringNumbers);
+        centerPane.setAlignment(Pos.CENTER);
+        centerPane.setPadding(new Insets(30));
+
+        VBox paneMain = new VBox(lblHeader, topPanel, centerPane, bottomPanel);
         paneMain.setAlignment(Pos.CENTER);
 
         this.paneMain = paneMain;
-
     }
 
     //Instantiate and configure the controls
     @Override
     protected void loadControls() {
         //top left panel
-        txtNumberAdd = new TextField();
-        txtNumberAdd.setPrefColumnCount(6);
-
         btnAdd = new Button("Agregar");
         btnAdd.setOnAction(actionEvent -> click_btn_add());
 
@@ -84,7 +87,6 @@ public class PanelGap extends Panel {
 
         txtAreaNumbersAdded = new TextArea();
         txtAreaNumbersAdded.setWrapText(true);
-        txtAreaNumbersAdded.setDisable(true);
         txtAreaNumbersAdded.setMaxWidth(350);
         txtAreaNumbersAdded.setMaxHeight(100);
 
@@ -106,6 +108,8 @@ public class PanelGap extends Panel {
         //bottom right panel
         lblValueToResult = new Label();
         lblResult = new Label();
+        lblStringNumbers = new Label();
+        lblStringNumbers.setFont(new Font("Gargi", 20));
     }
 
     private VBox topRightPanel() {
@@ -166,9 +170,11 @@ public class PanelGap extends Panel {
                 MessageBox.show("Los Datos ingresados tiene que ser decimales", "HUECOS");
             }
             tableData.setItems(gap.getTableResult());
+            lblStringNumbers.setText(gap.getStringNumbers());
             lblValueToResult.setText(String.format("X²o < X²%s,%s",
                     gap.getOneMinusConfidenceLevel(), 5));
             lblResult.setText(String.format("%s < %s", gap.getSummation(), gap.getResultAlpha()));
+            gap.clear();
         }
     }
 
@@ -178,13 +184,22 @@ public class PanelGap extends Panel {
     }
 
     public void click_btn_add() {
-        String textNumber = txtNumberAdd.getText();
-        txtNumberAdd.setText("");
-        try {
-            gap.addNumber(Double.parseDouble(textNumber));
-            action_btn_add(txtAreaNumbersAdded, textNumber);
-        } catch (NumberFormatException e) {
-            MessageBox.show("El numero para agregar debe ser un decimal", "HUECOS");
+        String input = txtAreaNumbersAdded.getText();
+
+        if (input.isEmpty()) {
+            MessageBox.show("Introducir numeeros", "HUECOS");
+
+        } else {
+            String[] inputSplit = input.trim().split(" ");
+            try {
+                List<Double> numbers = Arrays.stream(inputSplit)
+                        .map(textNumber -> Double.parseDouble(textNumber.trim()))
+                        .collect(Collectors.toCollection(ArrayList::new));
+                gap.addNumbers(numbers);
+                MessageBox.show("Numeros agregados exitosamente", "HUECOS");
+            } catch (NumberFormatException e) {
+                MessageBox.show("El numero para agregar debe ser un decimal", "HUECOS");
+            }
         }
     }
 
@@ -192,5 +207,4 @@ public class PanelGap extends Panel {
         txtAreaNumbersAdded.setText("");
         gap.clear();
     }
-
 }
