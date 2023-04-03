@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Series {
@@ -23,6 +24,8 @@ public class Series {
     private int alpha;
     private int k;
     private final List<Double> numbers;
+
+    private String[][] matrixString;
 
     public Series() {
         numbers = new ArrayList<>();
@@ -45,9 +48,10 @@ public class Series {
         return Decimal.getDecimal(2, totalResult);
     }
 
-    public void addNumber(double number) {
-        numbers.add(number);
+    public void addNumbers(Collection<Double> numbers) {
+        this.numbers.addAll(numbers);
     }
+
     public void clear() {
         numbers.clear();
     }
@@ -87,12 +91,14 @@ public class Series {
         SeriesCell[][] seriesCells = loadValuesInCells();
         ObservableList<RowSeries> rows = FXCollections.observableArrayList();
         totalResult = 0.0;
-
+        String[][] matrixStringTemp = new String[k][k];
         double fe = getFrequencyExpected();
         int counterRow = 1;
+
         for (int i = 0; i < k; i++) {
             for (int j = k - 1; j >= 0; j--, counterRow++) {
                 int fo = seriesCells[j][i].getValue();
+                matrixStringTemp[j][i] = String.valueOf(fo);
                 double result = Math.pow(fo - fe, 2) / fe;
                 result = Decimal.getDecimal(2, result);
                 if (result < 0.0) {
@@ -102,10 +108,15 @@ public class Series {
                 totalResult += result;
             }
         }
+        this.matrixString = matrixStringTemp;
         return rows;
     }
 
     public double getValueAlphaK() {
         return tableSeries.getValue(getAlphaDecimal(), k * k - 1);
+    }
+
+    public String[][] getMatrixString() {
+        return matrixString;
     }
 }
