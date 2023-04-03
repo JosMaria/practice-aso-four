@@ -79,12 +79,12 @@ public class PanelPoker extends Panel {
         txtAreaNumbers = new TextArea();
         txtAreaNumbers.setWrapText(true);
         txtAreaNumbers.setMaxWidth(450);
-        txtAreaNumbers.setMaxHeight(200);
+        txtAreaNumbers.setMaxHeight(150);
 
         txtAreaOutput = new TextArea();
         txtAreaOutput.setWrapText(true);
         txtAreaOutput.setMaxWidth(650);
-        txtAreaOutput.setMaxHeight(250);
+        txtAreaOutput.setMaxHeight(150);
         txtAreaOutput.setEditable(false);
 
         rdoThreeDecimals = new RadioButton("3 Dec");
@@ -121,6 +121,7 @@ public class PanelPoker extends Panel {
 
         VBox centerPane = new VBox(10, new Label("=== SALIDA ==="), txtAreaOutput);
         centerPane.setAlignment(Pos.CENTER);
+        centerPane.setPadding(new Insets(20));
 
         VBox paneMain = new VBox(lblHeader, topPanel, centerPane, bottomPanel);
         paneMain.setAlignment(Pos.CENTER);
@@ -221,7 +222,7 @@ public class PanelPoker extends Panel {
             if (isCorrectCountDecimals(FOUR_DECIMALS)) {
                 numberOfCategories = 4;
             }
-        } else if (rdoFourDecimals.isSelected()) {
+        } else if (rdoFiveDecimals.isSelected()) {
             if (isCorrectCountDecimals(FIVE_DECIMALS)) {
                 numberOfCategories = 6;
             }
@@ -245,7 +246,6 @@ public class PanelPoker extends Panel {
     }
 
     private void click_btn_start() {
-        click_btn_verify();
         try {
             poker.setLevelAcceptance(Integer.parseInt(txtLevelAcceptance.getText()));
         } catch (NumberFormatException e) {
@@ -262,6 +262,7 @@ public class PanelPoker extends Panel {
             MessageBox.show(MESSAGE, "POKER");
         }
         buildAreaTextOutput();
+        poker.clear();
     }
 
     private void buildAreaTextOutput() {
@@ -274,5 +275,4 @@ public class PanelPoker extends Panel {
     private String elementToString(String textNumber, String textCategory) {
         return String.format("( %s | %s )   ", textNumber, textCategory);
     }
-
 }
